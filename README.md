@@ -65,3 +65,27 @@ util.GetShortDate()
 util.GetLongDate()
 ...
 ```
+
+## database
+```go
+import (
+	"github.com/darcyjoven/util/database"
+	// 你需要的数据库驱动
+	_ "github.com/sijms/go-ora/v2"
+)
+func main(){
+	d,err:=database.NewDB("oracle","connect-string")
+	defer d.Close()
+...
+	data:=d.GetData("querystr",1,time.now)
+	
+	item:=d.Fetch("querystr",1,time.now)
+	
+	rows:=d.Foreach("querystr",1,time.now)
+	for rows.Next(){
+		item:=rows.Fetch()
+	}
+...
+	cnt,err := d.Exec("some sql",1)
+}
+```

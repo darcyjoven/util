@@ -3,7 +3,9 @@ module github.com/darcyjoven/util
 go 1.18
 
 require (
+	github.com/jmoiron/sqlx v1.3.5
 	github.com/russross/blackfriday/v2 v2.1.0
+	github.com/sijms/go-ora/v2 v2.4.27
 	github.com/xuri/excelize/v2 v2.6.0
 )
 
