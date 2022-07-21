@@ -75,3 +75,8 @@ func SetBorder(f1 *excelize.File) error {
 	}
 	return nil
 }
+
+// open
+func OpenFile(f string) (*excelize.File, error) {
+	return excelize.OpenFile(f)
+}
