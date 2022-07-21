@@ -15,6 +15,6 @@ func TestBorder(t *testing.T) {
 	}
 	e := NewExcel("name")
 	e.file = f
-	e.SetBorder()
+	SetBorder(f)
 	defer f.Save()
 }

@@ -61,13 +61,13 @@ func (f *excelFile) Save() string {
 }
 
 // 有资料的位置设置边框
-func (f *excelFile) SetBorder() error {
-	for _, v := range f.file.GetSheetList() {
-		i, j := getMaxHV(f.file, v)
+func SetBorder(f1 *excelize.File) error {
+	for _, v := range f1.GetSheetList() {
+		i, j := getMaxHV(f1, v)
 		if i*j == 0 {
 			return fmt.Errorf("无资料")
 		}
-		err := f.file.SetCellStyle(v, "A1", util.NumToLetter(i)+strconv.Itoa(j), allborder(f.file))
+		err := f1.SetCellStyle(v, "A1", util.NumToLetter(i)+strconv.Itoa(j), allborder(f1))
 		if err != nil {
 			log.Println(err)
 			return err
