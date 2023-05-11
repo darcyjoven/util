@@ -105,11 +105,16 @@ func (e *email) Send() error {
 	e.server.verify()
 	// 设置正文
 	e.setBody()
+	// 收件人需要包含抄送和密送
+	all := make([]string, len(e.to)+len(e.cc)+len(e.bcc))
+	all = append(all, e.to...)
+	all = append(all, e.cc...)
+	all = append(all, e.bcc...)
 	return smtp.SendMail(
 		e.server.host+":"+e.server.port,
 		*e.server.auth,
 		e.server.user,
-		e.to,
+		all,
 		e.body.content,
 	)
 }
