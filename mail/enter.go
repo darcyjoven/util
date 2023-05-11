@@ -106,7 +106,7 @@ func (e *email) Send() error {
 	// 设置正文
 	e.setBody()
 	// 收件人需要包含抄送和密送
-	all := make([]string, len(e.to)+len(e.cc)+len(e.bcc))
+	var all []string
 	all = append(all, e.to...)
 	all = append(all, e.cc...)
 	all = append(all, e.bcc...)
