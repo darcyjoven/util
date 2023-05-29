@@ -17,7 +17,7 @@ func (e *email) setBody() {
 	header["From"] = e.server.user
 	header["To"] = strings.Join(e.to, ";")
 	header["Cc"] = strings.Join(e.cc, ";")
-	header["Bcc"] = strings.Join(e.bcc, ";")
+	// header["Bcc"] = strings.Join(e.bcc, ";")
 	header["Subject"] = e.subject
 	header["Content-Type"] = "multipart/mixed;boundary=" + boundary
 	header["Mime-Version"] = "1.0"
