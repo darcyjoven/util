@@ -2,6 +2,7 @@ package zapper
 
 import (
 	"encoding/json"
+	"os"
 	"time"
 
 	"go.uber.org/zap"
@@ -35,6 +36,7 @@ func Exec(file string) (logger *zap.Logger, err error) {
 	clock := constantClock(date)
 	logger = zap.Must(cfg.Build(
 		zap.WithClock(clock),
+		zap.Fields(zap.Int("pid", os.Getpid())),
 	))
 	// defer logger.Sync()
 	return logger, nil
