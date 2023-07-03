@@ -18,7 +18,8 @@ func (e *email) setBody() {
 	header["To"] = strings.Join(e.to, ";")
 	header["Cc"] = strings.Join(e.cc, ";")
 	// header["Bcc"] = strings.Join(e.bcc, ";")
-	header["Subject"] = e.subject
+	// utf8 base64 编码邮件主题
+	header["Subject"] = "=?UTF-8?B?" + base64.StdEncoding.EncodeToString([]byte(e.subject)) + "?="
 	header["Content-Type"] = "multipart/mixed;boundary=" + boundary
 	header["Mime-Version"] = "1.0"
 	header["Date"] = time.Now().String()
