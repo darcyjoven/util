@@ -42,7 +42,7 @@ func (e *email) setBody() {
 		attachment += "Content-Disposition:attachment\r\n"
 		// 附件名称也用base64编码，防止中文乱码
 
-		attachment += "Content-Type:application/octet-stream;name=\"" + base64.StdEncoding.EncodeToString([]byte(k)) + "\"\r\n"
+		attachment += "Content-Type:application/octet-stream;name=\"=?UTF-8?B?" + base64.StdEncoding.EncodeToString([]byte(k)) + "?=\"\r\n"
 		buffer.WriteString(attachment)
 
 		defer func() {
