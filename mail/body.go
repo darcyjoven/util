@@ -32,7 +32,9 @@ func (e *email) setBody() {
 	// 正文头部内容
 	body := "\r\n--" + boundary + "\r\n"
 	body += "Content-Type:" + e.body.types + "\r\n"
-	body += "\r\n" + string(e.body.content) + "\r\n"
+	body += "Content-Transfer-Encoding:base64\r\n"
+	body += "\r\n" + base64.StdEncoding.EncodeToString(e.body.content) + "\r\n"
+	// body += "\r\n" + string(e.body.content) + "\r\n"
 	buffer.WriteString(body)
 
 	// 附件
